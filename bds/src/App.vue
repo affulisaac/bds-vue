@@ -1,13 +1,33 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import Button from 'primevue/button';
-import  BdsButton  from './components/bds/button.vue';
-
-
+import BdsButton from "./components/bds/button.vue";
+import BdsDropdown from "./components/bds/dropdown.vue";
+import { ref } from "vue";
+const selectedCity = ref();
+const cities = ref([
+  { name: "New York", code: "NY" },
+  { name: "Rome", code: "RM" },
+  { name: "London", code: "LDN" },
+  { name: "Istanbul", code: "IST" },
+  { name: "Paris", code: "PRS" },
+]);
 </script>
 
-<template>    
-        <BdsButton label="I am button"  />
+<template>
+  <h1 class="text-1xl font-bold mb-3 px-4 mt-3">All Components</h1>
+
+  <div class="gap-8 columns-5 px-4 ...">
+    <div>
+      <BdsDropdown
+        :filter="true"
+        v-model="selectedCity"
+        :options="cities"
+        optionLabel="name"
+        placeholder="Select a City"
+        label="I am button"
+      />
+    </div>
+    <BdsButton label="Login" />
+</div>
 </template>
 
 <style scoped>
