@@ -21,7 +21,7 @@
     "test": "exit 0"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@peshanghiwa"
+    "registry": "https://npm.pkg.github.com/@isaac_afful"
   },
   "dependencies": {
     "primeicons": "^6.0.1",
