@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import BdsButton from "./components/bds/button.vue";
 import BdsDropdown from "./components/bds/dropdown.vue";
+import BdsChips from "./components/bds/chips.vue";
+import BdsSplitButton from "./components/bds/splitButton.vue";
 import { ref } from "vue";
+import { useToast } from "primevue/usetoast";
+const toast = useToast();
+
 const selectedCity = ref();
 const cities = ref([
   { name: "New York", code: "NY" },
@@ -10,24 +15,81 @@ const cities = ref([
   { name: "Istanbul", code: "IST" },
   { name: "Paris", code: "PRS" },
 ]);
+const items = [
+  {
+    label: "Update",
+    icon: "pi pi-refresh",
+    command: () => {
+      toast.add({
+        severity: "success",
+        summary: "Updated",
+        detail: "Data Updated",
+        life: 3000,
+      });
+    },
+  },
+  {
+    label: "Delete",
+    icon: "pi pi-times",
+    command: () => {
+      toast.add({
+        severity: "warn",
+        summary: "Delete",
+        detail: "Data Deleted",
+        life: 3000,
+      });
+    },
+  },
+  {
+    label: "Vue Website",
+    icon: "pi pi-external-link",
+    command: () => {
+      window.location.href = "https://vuejs.org/";
+    },
+  },
+  { label: "Upload", icon: "pi pi-upload", to: "/fileupload" },
+];
+
+const chipList = ref();
+
+const save = () => {
+  toast.add({
+    severity: "success",
+    summary: "Success",
+    detail: "Data Saved",
+    life: 3000,
+  });
+};
 </script>
 
 <template>
+  <Toast />
+
   <h1 class="text-1xl font-bold mb-3 px-4 mt-3">All Components</h1>
 
-  <div class="gap-8 columns-5 px-4 ...">
+  <div class="gap-8 flex px-4 ...">
     <div>
+
       <BdsDropdown
-        :filter="true"
+        :filter="false"
         v-model="selectedCity"
         :options="cities"
         optionLabel="name"
         placeholder="Select a City"
         label="I am button"
       />
+      
     </div>
-    <BdsButton label="Login" />
-</div>
+    <BdsButton :outlined="true" label="Search" icon="pi pi-user" />
+    <BdsChips v-model="chipList" separator="," />
+
+    <BdsSplitButton
+      label="Save"
+      icon="pi pi-plus"
+      @click="save"
+      :model="items"
+    />
+  </div>
 </template>
 
 <style scoped>
