@@ -1,6 +1,17 @@
-import BdsButton from './components/bds/button.vue';
-import BdsDropdown from './components/bds/dropdown.vue';
-import BdsSplitButton from './components/bds/splitButton.vue';
-import BdsChips from './components/bds/chips.vue';
+import * as components from './components'
 
-export { BdsButton, BdsDropdown, BdsSplitButton, BdsChips}
+const componentsList  = components?.default
+const BdsComponents = {
+    install (Vue) {
+       Object.keys(componentsList).forEach((name) => {
+              Vue.component(name, componentsList[name])
+       })
+    }
+}
+
+export default BdsComponents
+
+export { BdsButton } from './components//bds/Button'
+export { BdsChips } from './components/bds/Chips'
+export { BdsDropdown } from './components/bds/Dropdown'
+export { BdsSplitButton } from './components/bds/SplitButton'
