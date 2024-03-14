@@ -1,14 +1,20 @@
 {
   "name": "bds-vue",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "private": false,
   "type": "module",
-  "main": "./dist/bds-vue.cjs.js",
-  "module": "./dist/bds-vue.es.js",
+  "main": "./dist/bds-vue.umd.cjs",
+  "module": "./dist/bds-vue.js",
+  "exports": {
+    ".": {
+      "import": "./dist/brian-component-lib.js",
+      "require": "./dist/brian-component-lib.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
   "files": [
     "dist"
   ],
-  
   "scripts": {
     "dev": "vite",
     "build": "vite build && npm run build:styles",
@@ -19,18 +25,15 @@
     "preview": "vite preview",
     "test": "exit 0"
   },
-
   "peerDependencies": {
     "vue": "^3.4.15"
   },
-
   "dependencies": {
     "primeicons": "^6.0.1",
     "primevue": "^3.49.1",
     "vue": "^3.4.15"
   },
   "types": "./dist/types/index.d.ts",
-
   "repository": {
     "type": "git",
     "url": "https://github.com/affulisaac/bds-vue"
