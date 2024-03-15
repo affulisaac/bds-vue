@@ -1,11 +1,18 @@
 import * as components from './components'
-
-const componentsList  = components?.default
+import PrimeVue from 'primevue/config';
+import Tailwind from "primevue/passthrough/tailwind";
+import 'primeicons/primeicons.css'
+import './tailwind.css'
+import './presets/lara';
+const componentsList = components?.default
 const BdsComponents = {
-    install (Vue) {
-       Object.keys(componentsList).forEach((name) => {
-              Vue.component(name, componentsList[name])
-       })
+    install(Vue) {
+        Vue.use(PrimeVue, {
+            unstyled: true, pt: Tailwind
+        })
+        Object.keys(componentsList).forEach((name) => {
+            Vue.component(name, componentsList[name])
+        })
     }
 }
 

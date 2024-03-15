@@ -4,23 +4,21 @@ A set of UI components for building beautiful and accessible web applications. I
 
 ## Installation
 
-```Yarn
-yarn add bds-vue
-```
+
+`` npm install bds-vue ``
 
 ## Usage
 
 ```javascript
-<template>
-  <div id="app">
-    <bds-button>Click me</bds-button>
-  </div>
-</template>
-<script setup lang="ts">
 
-import BdsButton from 'bds-vue/button'
-
+<script setup>
+import { BdsButton } from 'bds-vue'
 </script>
+
+<template>
+<BdsButton label="Submit" icon="pi pi-check" iconPos="right" />
+</template>
+
 ``` 
 
 
